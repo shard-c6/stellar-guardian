@@ -108,12 +108,9 @@ class Game {
 
         this.enemies.forEach(e => e.update());
         
-        // Handle enemies escaping/reaching bottom
-        this.enemies.forEach(e => {
-            if (!e.active) {
-                this.takeDamage();
-            }
-        });
+        // Enemies are naturally filtered out in the next step when they go off-screen
+        // Removing takeDamage() here as per user request to not penalize for missed obstacles.
+
         
         this.enemies = this.enemies.filter(e => e.active && !e.toRemove);
 
